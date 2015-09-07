@@ -1,6 +1,19 @@
 {
-  "name": "package",
-  "version": "0.0.0",
-  "dependencies": {}
+  "name": "<%= componentName %>",
+  "description": "<%= description %>",
+  "version": "0.0.1",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "examples",
+    "src",
+    "gulpfile.js",
+    "karma.conf.js"
+  ],
+  "dependencies": {},
+  "devDependencies": {}
 }
 
