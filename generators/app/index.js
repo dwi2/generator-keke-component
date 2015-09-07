@@ -13,29 +13,40 @@ module.exports = yeoman.generators.Base.extend({
     ));
 
     var prompts = [{
-      type: 'confirm',
-      name: 'someOption',
-      message: 'Would you like to enable this option?',
-      default: true
+      name: 'componentName',
+      message: 'What is the name of your component ?'
+    }, {
+      name: 'description',
+      message: 'What is descrption of your component ?'
+    }, {
+      name: 'repoGitUrl',
+      message: 'What is git repo url of your component ?'
     }];
 
     this.prompt(prompts, function (props) {
       this.props = props;
       // To access props later use this.props.someOption;
-
+      if (!this.props.componentName) {
+        throw new Error('Must specify name of component');
+      } else {
+        this.destinationRoot('./' + this.props.componentName);
+      }
       done();
     }.bind(this));
   },
 
   writing: {
     app: function () {
-      this.fs.copy(
+      this.log(this.destinationRoot());
+      this.fs.copyTpl(
         this.templatePath('_package.json'),
-        this.destinationPath('package.json')
+        this.destinationPath('package.json'),
+        this.props
       );
-      this.fs.copy(
+      this.fs.copyTpl(
         this.templatePath('_bower.json'),
-        this.destinationPath('bower.json')
+        this.destinationPath('bower.json'),
+        this.props
       );
     },
 

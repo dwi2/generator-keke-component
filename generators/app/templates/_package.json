@@ -1,5 +1,10 @@
 {
-  "name": "package",
-  "version": "0.0.0",
+  "name": "<%= componentName %>",
+  "description": "<%= description %>",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "<%= repoGitUrl %>"
+  },
   "dependencies": {}
 }
