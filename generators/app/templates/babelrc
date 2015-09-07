@@ -1,0 +1,6 @@
+{
+  "blacklist": [
+    "es6.arrowFunctions",
+    "es6.templateLiterals"
+  ]
+}
