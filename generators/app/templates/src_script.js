@@ -1,5 +1,6 @@
 export default (function () {
-  // TODO: please define your component here.
   var proto = Object.create(HTMLElement.prototype);
+  // TODO: please define your component here.
+
   return document.registerElement('<%= componentName %>', {prototype: proto});
 }());

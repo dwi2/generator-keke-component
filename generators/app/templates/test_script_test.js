@@ -7,7 +7,7 @@ suite('h5-option-menu >', function() {
     this.sinon = sinon.sandbox.create();
     this.sinon.useFakeTimers();
 
-    subject = new <%= camelCaseComponentName %>();
+    subject = new <%= capitalizedCamelCaseComponentName %>();
   });
 
   teardown(function() {
