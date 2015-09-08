@@ -2,7 +2,7 @@
   "name": "generator-keke-component",
   "version": "0.0.1",
   "description": "Yeoman generator",
-  "license": "MIT",
+  "license": "BSD",
   "main": "app/index.js",
   "repository": "dwi2/generator-keke-component",
   "author": {
