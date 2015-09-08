@@ -16,7 +16,7 @@ var MODULARIZE_TASK_NAMES = ['common', 'umd', 'amd'];
 var createModularizeTask = function(name) {
   var babelOptions = {
     modules: name,
-    moduleId: name === 'amd' ? undefined : '<%= camelCaseComponentName %>'
+    moduleId: name === 'amd' ? undefined : '<%= capitalizedCamelCaseComponentName %>'
   };
   gulp.task(name, function() {
     return gulp.src(JS_FILES)

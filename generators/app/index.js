@@ -37,15 +37,17 @@ module.exports = yeoman.generators.Base.extend({
         return name.charAt(0).toUpperCase() + name.slice(1);
       };
       var dash2Camel = function(name) {
-        var camelCase = name.replace( /-+(.)/gi, function (match, capture1) {
+        return name.replace( /-+(.)/gi, function (match, capture1) {
           return capture1.toUpperCase();
         });
-        return capitalizeFirstLetter(camelCase);
       };
 
       // To access props later use this.props.someOption;
       this.props = props;
-      this.props.camelCaseComponentName = dash2Camel(this.props.componentName);
+      this.props.camelCaseComponentName =
+        dash2Camel(this.props.componentName);
+      this.props.capitalizedCamelCaseComponentName =
+        capitalizeFirstLetter(this.props.camelCaseComponentName);
       this.destinationRoot('./' + this.props.componentName);
       done();
     }.bind(this));
@@ -81,6 +83,11 @@ module.exports = yeoman.generators.Base.extend({
       this.fs.copyTpl(
         this.templatePath('test_script_test.js'),
         this.destinationPath('test/script_test.js'),
+        this.props
+      );
+      this.fs.copyTpl(
+        this.templatePath('_README.md'),
+        this.destinationPath('README.md'),
         this.props
       );
     },
