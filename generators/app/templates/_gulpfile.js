@@ -33,20 +33,17 @@ gulp.task('clean',
     'bower_components',
     'dist',
     'examples/common',
-    'examples/umd'
+    'examples/umd',
+    'examples/amd'
   ])
 );
 
-gulp.task('test', function (done) {
+gulp.task('test', ['compile'], function (done) {
   var server = new Server({
     configFile: __dirname + '/karma.conf.js',
     singleRun: true
     }, done);
   server.start();
-});
-
-gulp.task('bower', function() {
-  return bower().pipe(gulp.dest('examples/lib'));
 });
 
 gulp.task('lint', function() {
@@ -59,14 +56,16 @@ MODULARIZE_TASK_NAMES.forEach(function(name) {
   createModularizeTask(name);
 });
 
-gulp.task('compile', MODULARIZE_TASK_NAMES);
+gulp.task('compile', MODULARIZE_TASK_NAMES, function() {
+  return bower().pipe(gulp.dest('examples/lib'));
+});
 
 gulp.task('clean-build', function(callback) {
   runSequence('clean', ['build'], callback);
 });
 
 gulp.task('build', function(callback) {
-  runSequence('bower', 'lint', 'compile', 'test', callback);
+  runSequence('lint', 'test', callback);
 });
 
 gulp.task('serve', ['build'], function() {
