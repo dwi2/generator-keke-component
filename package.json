@@ -1,6 +1,6 @@
 {
   "name": "generator-keke-component",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "An yeoman generator provide scaffolding of web component",
   "license": "BSD",
   "main": "app/index.js",

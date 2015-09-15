@@ -2,6 +2,7 @@
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
+var packageJson = require(__dirname + '/../../package.json');
 
 module.exports = yeoman.generators.Base.extend({
   prompting: function () {
@@ -9,7 +10,8 @@ module.exports = yeoman.generators.Base.extend({
 
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the kryptonian ' + chalk.red('KekeComponent') + ' generator!'
+      'Welcome to the kryptonian ' + chalk.red('KekeComponent') +
+      ' generator! (' + packageJson.version + ')'
     ));
 
     var validNameRegex = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
