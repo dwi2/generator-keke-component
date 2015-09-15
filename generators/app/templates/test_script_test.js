@@ -1,6 +1,6 @@
 'use strict';
 
-suite('h5-option-menu >', function() {
+suite('<%= componentName %> >', function() {
   var subject;
 
   setup(function() {
